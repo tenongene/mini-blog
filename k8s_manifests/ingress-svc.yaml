@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: posts-svc-clusterip
+  annotations:
+    nginx.org/path-regex: 'case_insensitive'
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: a5fade20799304b649a96fce3bfa4845-535390894.us-east-1.elb.amazonaws.com
+      http:
+        paths:
+          - path: /posts/create
+            pathType: Prefix
+            backend:
+              service:
+                name: posts-svc-clusterip
+                port:
+                  number: 4000
+          - path: /posts/?(.*)/comments
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-svc
+                port:
+                  number: 4001
+          - path: /posts
+            pathType: Prefix
+            backend:
+              service:
+                name: query-svc
+                port:
+                  number: 4002
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blogapp-svc
+                port:
+                  number: 3000

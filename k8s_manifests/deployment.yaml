@@ -1,0 +1,160 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: posts-server
+  name: posts-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: posts-server
+    spec:
+      containers:
+        - image: tenongene/posts
+          name: posts-server
+          resources: {}
+          imagePullPolicy: Always
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: query-server
+  name: query-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: query-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: query-server
+    spec:
+      containers:
+        - image: tenongene/query
+          name: query-server
+          resources: {}
+          imagePullPolicy: Always
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: event-bus
+  name: event-bus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-bus
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: event-bus
+    spec:
+      containers:
+        - image: tenongene/eventbus
+          name: event-bus
+          resources: {}
+          imagePullPolicy: Always
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: comments-server
+  name: comments-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: comments-server
+    spec:
+      containers:
+        - image: tenongene/comments
+          name: comments-server
+          resources: {}
+          imagePullPolicy: Always
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: moderation-server
+  name: moderation-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moderation-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: moderation-server
+    spec:
+      containers:
+        - image: tenongene/moderation
+          name: moderation-server
+          resources: {}
+          imagePullPolicy: Always
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: blogapp
+  name: blogapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blogapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: blogapp
+    spec:
+      containers:
+        - image: tenongene/blogapp
+          name: blogapp
+          resources: {}
+          imagePullPolicy: Always
+status: {}
